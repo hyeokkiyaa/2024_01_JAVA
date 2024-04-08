@@ -7,16 +7,16 @@ public class Rectangle {
     /**
      * default setting of width
      */
-    public int width = 0;
+    private int width = 0;
     /**
      * default setting of height
      */
-    public int height = 0;
+    private int height = 0;
 
     /**
      * default setting of origin
      */
-    public Point origin;
+    private Point origin;
 
     /**
      * Constructing Default value of 0,0
@@ -59,20 +59,41 @@ public class Rectangle {
 
     /**
      * a method for moving the rectangle
-     * @param x setting new x
-     * @param y setting new y
      */
     public void move(int x, int y) {
-        origin.x = x;
-        origin.y = y;
+        origin.move(x,y);
     }
 
     /**
      * a method for computing the area of the rectangle
-     * @return area returned
+     * @return
      */
     public int getArea() {
         return width * height;
+    }
+
+    /**
+     * getter for width
+     * @return width
+     */
+    public int getWidth() {
+        return width;
+    }
+
+    /**
+     * getter for height 
+     * @return height
+     */
+    public int getHeight() {
+        return height;
+    }
+
+    /**
+     * getter for origin point
+     * @return origin object
+     */
+    public Point getOrigin() {
+        return origin;
     }
 }
 

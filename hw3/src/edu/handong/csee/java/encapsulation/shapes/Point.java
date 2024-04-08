@@ -7,11 +7,11 @@ public class Point {
     /**
      * x is rect's x point
      */
-    public int x = 0;
+    private int x = 0;
     /**
      * y is rect's y point
      */
-    public int y = 0;
+    private int y = 0;
     
     /**
      * this is a constructor to make points of the rectangle
@@ -21,6 +21,34 @@ public class Point {
     public Point(int a, int b) {
         x = a;
         y = b;
+    }
+
+    /**
+     * getter for x
+     * @return x
+     */
+    public int getX() {
+        return x;
+    }
+
+
+    /**
+     * getter for y
+     * @return y
+     */
+    public int getY() {
+        return y;
+    }
+
+
+    /**
+     * to resize rectangle
+     * @param x
+     * @param y
+     */
+    public void move(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 }
 

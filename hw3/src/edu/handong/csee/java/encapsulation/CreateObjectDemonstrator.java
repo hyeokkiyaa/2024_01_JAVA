@@ -10,6 +10,12 @@ import edu.handong.csee.java.encapsulation.shapes.Rectangle;
  * This class is main class to create rectangle objects and use move functions to reset rect.
  */
 public class CreateObjectDemonstrator {
+    /**
+     * This is a constructor for CreateObjectDemonstartor
+     */
+    public CreateObjectDemonstrator(){
+
+    }
 
     /**
      * main to run program
@@ -38,26 +44,26 @@ public class CreateObjectDemonstrator {
          * Show rectOne's width, height, and area
         */
         
-        System.out.println("Width of rectOne: " + rectOne.width);
-        System.out.println("Height of rectOne: " + rectOne.height);
+        System.out.println("Width of rectOne: " + rectOne.getWidth);
+        System.out.println("Height of rectOne: " + rectOne.getHeight);
         System.out.println("Area of rectOne: " + rectOne.getArea());
 
         /**
          * set rectTwo position
          */
-        rectTwo.origin = originOne;
+        rectTwo.setOrigin = originOne;
 
         /**
          * shows rectTwo's position x and y
          */
-        System.out.println("X Position of rectTwo: " + rectTwo.origin.x);
-        System.out.println("Y Position of rectTwo: " + rectTwo.origin.y);
+        System.out.println("X Position of rectTwo: " + rectTwo.getOrigin().getX());
+        System.out.println("Y Position of rectTwo: " + rectTwo.getOrigin().getY());
 
         /**
          * moving rectTwo and show its new position
          */
         rectTwo.move(40, 72);
-        System.out.println("X Position of rectTwo: " + rectTwo.origin.x);
-        System.out.println("Y Position of rectTwo: " + rectTwo.origin.y);
+        System.out.println("X Position of rectTwo: " + rectTwo.getOrigin().getX());
+        System.out.println("Y Position of rectTwo: " + rectTwo.getOrigin().getY());
     }
 }
