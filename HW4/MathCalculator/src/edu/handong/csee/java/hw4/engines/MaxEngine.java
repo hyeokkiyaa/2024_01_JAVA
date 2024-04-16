@@ -11,12 +11,12 @@ public class MaxEngine implements Computable {
 
     @Override
     public void setInput(String[] args) {
-        if(args.length<2){
+        if (args.length < 3) { // 엔진 이름과 최소 1개의 숫자값을 받아야 함
             InputChecker.printErrorMessageForTheNumberOfMinimumRequiredInputsAndExit(engineName, 2);
         }
-        input = new double[args.length];
-        for(int i=0;i<args.length;i++){
-            input[i] = Double.parseDouble(args[i]);
+        input = new double[args.length - 1];
+        for (int i = 1; i < args.length; i++) { // args[0]은 엔진 이름이므로 i를 1부터 시작
+            input[i - 1] = Double.parseDouble(args[i]); // input 배열에 값 저장
         }
     }
 
@@ -50,6 +50,7 @@ public class MaxEngine implements Computable {
 
     @Override
     public Number getResult() {
-        return result;
+        return Double.valueOf(result); // double 값인 result를 반환합니다.
     }
+
 }

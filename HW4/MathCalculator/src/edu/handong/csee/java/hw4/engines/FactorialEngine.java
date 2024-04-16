@@ -9,10 +9,10 @@ public class FactorialEngine implements Computable {
 
     @Override
     public void setInput(String[] args) {
-        if (args.length != 1) {
+        if (args.length != 2) {
             InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(engineName, 1);
         }
-        n = Integer.parseInt(args[0]);
+        n = Integer.parseInt(args[1]);
     }
 
     public void setResult(double result) {
@@ -24,12 +24,9 @@ public class FactorialEngine implements Computable {
         if (n < 0) {
             InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
         }
-        if (n == 0 || n == 1) {
-            result = 0;
-        } else {
-            for (int i = 2; i <= n; i++) {
-                result *= i;
-            }
+        result = 1; // 결과를 1로 초기화
+        for (int i = 2; i <= n; i++) { // 2부터 n까지 숫자를 곱함
+            result *= i;
         }
     }
 
@@ -43,6 +40,6 @@ public class FactorialEngine implements Computable {
 
     @Override
     public Number getResult() {
-        return result;
+        return Double.valueOf(result);
     }
 }

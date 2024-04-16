@@ -10,10 +10,10 @@ public class SphereVolEngine implements Computable {
 
     @Override
     public void setInput(String[] args) {
-        if(args.length != 1){
+        if(args.length != 2){
             InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(engineName, 1);
         }
-        radius = Double.parseDouble(args[0]);
+        radius = Double.parseDouble(args[1]);
         if(radius<0){
             InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
         }
@@ -38,7 +38,7 @@ public class SphereVolEngine implements Computable {
     
     @Override
     public Number getResult() {
-        return result;
+        return Double.valueOf(result);
     }
     
 }

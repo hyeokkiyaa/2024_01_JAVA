@@ -9,10 +9,10 @@ public class SQRTEngine implements Computable {
 
     @Override
     public void setInput(String[] args) {
-        if(args.length!=1){
+        if(args.length!=2){
             InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(engineName, 1);
         }
-        input = Double.parseDouble(args[0]);
+        input = Double.parseDouble(args[1]);
         if(input <0){
             InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
         }
@@ -37,6 +37,6 @@ public class SQRTEngine implements Computable {
 
     @Override
     public Number getResult() {
-        return result;
+        return Double.valueOf(result);
     }
 }

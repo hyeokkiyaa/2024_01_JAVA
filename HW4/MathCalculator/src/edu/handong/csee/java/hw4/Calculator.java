@@ -2,21 +2,46 @@ package edu.handong.csee.java.hw4;
 
 import edu.handong.csee.java.hw4.engines.*;
 
+/**
+ * A class to perform various types of calculations.
+ */
 public class Calculator {
 
-    public static void main(String[] args) {
+    /**
+     * Constructs a new Calculator object.
+     */
+    public Calculator() {
+    }
 
+    /**
+     * The main method of the Calculator class.
+     * 
+     * @param args The command-line arguments passed when the program starts.
+     */
+    public static void main(String[] args) {
+        /**
+         * Creates an instance of the Calculator class.
+         */
         Calculator myCalculator = new Calculator();
 
+        // Calls the run method to execute the calculator with the specified arguments.
         myCalculator.run(args);
     }
 
+    /**
+     * Runs the calculator with the specified arguments.
+     * 
+     * @param args The command-line arguments passed when the program starts.
+     */
     public void run(String[] args) {
-
+        
+        // Converts the first argument to uppercase to match the engine names.
         String engineName = args[0].toUpperCase();
 
+        // Declares a variable to hold the computable engine.
         Computable engine = null;
 
+        // Chooses the appropriate engine based on the specified engine name.
         switch(engineName) {
             case "LCM":
                 engine = new LCMEngine();
@@ -50,12 +75,12 @@ public class Calculator {
                 System.exit(0);
         }
 
+        // Sets the input values for the engine.
         engine.setInput(args);
+        // Computes the result using the specified engine.
         engine.compute();
 
+        // Prints the result of the computation.
         System.out.println("The result of " +  engineName + " is " + engine.getResult() + ".");
-
     }
-
-
 }

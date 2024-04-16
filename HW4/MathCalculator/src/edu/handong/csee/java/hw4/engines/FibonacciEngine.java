@@ -9,10 +9,10 @@ public class FibonacciEngine implements Computable {
 
     @Override
     public void setInput(String[] args) {
-        if(args.length != 1){
+        if(args.length != 2){
             InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(engineName, 1);
         }
-        n = Integer.parseInt(args[0]);
+        n = Integer.parseInt(args[1]);
     }
 
     public void setResult(double result) {
@@ -45,6 +45,6 @@ public class FibonacciEngine implements Computable {
 
     @Override
     public Number getResult() {
-        return result;
+        return Double.valueOf(result);
     }
 }

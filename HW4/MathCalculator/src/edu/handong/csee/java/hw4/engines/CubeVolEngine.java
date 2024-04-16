@@ -9,10 +9,10 @@ public class CubeVolEngine implements Computable {
 
     @Override
     public void setInput(String[] args) {
-        if (args.length != 1) {
+        if (args.length != 2) {
             InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(engineName, 1);
         }
-        sideLength = Double.parseDouble(args[0]);
+        sideLength = Double.parseDouble(args[1]);
     }
 
     public void setVolume(double volume) {
@@ -37,7 +37,7 @@ public class CubeVolEngine implements Computable {
 
     @Override
     public Number getResult() {
-        return volume;
+        return Double.valueOf(volume);
     }
 
 }

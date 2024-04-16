@@ -9,12 +9,12 @@ public class LCMEngine implements Computable{
 
     @Override
     public void setInput(String[] args) {
-        if(args.length<2){
+        if(args.length<3){
             InputChecker.printErrorMessageForTheNumberOfMinimumRequiredInputsAndExit(engineName, 2);
         }
-        input = new int[args.length];
-        for(int i=0;i<args.length;i++){
-            input[i] = Integer.parseInt(args[i]);
+        input = new int[args.length-1];
+        for(int i=1;i<args.length;i++){
+            input[i-1] = Integer.parseInt(args[i]);
         }
     }
 
@@ -60,6 +60,6 @@ public class LCMEngine implements Computable{
 
     @Override
     public Number getResult() {
-        return result;
+        return Integer.valueOf(result);
     }
 }
