@@ -11,8 +11,11 @@ public class MaxEngine implements Computable {
 
     @Override
     public void setInput(String[] args) {
+        if(args.length<2){
+            InputChecker.printErrorMessageForTheNumberOfMinimumRequiredInputsAndExit(engineName, 2);
+        }
         input = new double[args.length];
-        for (int i = 0; i < args.length; i++) {
+        for(int i=0;i<args.length;i++){
             input[i] = Double.parseDouble(args[i]);
         }
     }
@@ -23,13 +26,6 @@ public class MaxEngine implements Computable {
 
     @Override
     public void compute() {
-        if (input == null || input.length == 0) {
-            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(engineName, 1);
-        }
-        if (input.length == 1) {
-            InputChecker.printErrorMessageForTheNumberOfMinimumRequiredInputsAndExit(engineName, 2);
-        }
-
         result = input[0];
         if (result < 0) {
             InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
