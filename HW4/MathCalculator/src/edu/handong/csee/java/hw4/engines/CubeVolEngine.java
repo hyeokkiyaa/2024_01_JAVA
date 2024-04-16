@@ -36,7 +36,7 @@ public class CubeVolEngine implements Computable {
     }
 
     @Override
-    public double getResult() {
+    public Number getResult() {
         return volume;
     }
 

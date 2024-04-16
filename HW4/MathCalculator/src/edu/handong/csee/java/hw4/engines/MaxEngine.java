@@ -53,7 +53,7 @@ public class MaxEngine implements Computable {
     }
 
     @Override
-    public double getResult() {
+    public Number getResult() {
         return result;
     }
 }

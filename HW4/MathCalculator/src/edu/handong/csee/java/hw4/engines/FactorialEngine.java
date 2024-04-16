@@ -42,7 +42,7 @@ public class FactorialEngine implements Computable {
     }
 
     @Override
-    public double getResult() {
+    public Number getResult() {
         return result;
     }
 }
