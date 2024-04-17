@@ -14,13 +14,32 @@ public class CubeVolEngine implements Computable {
 
     }
     /** The name of the engine. */
-    private static final String engineName = "CUBEVOL";
+    private static String engineName = "CUBEVOL";
 
     /** The length of the side of the cube. */
     private double sideLength;
 
     /** The calculated volume of the cube. */
     private double volume;
+
+    private double result;
+
+    /**
+     * Sets the length of the side of the cube.
+     * @param sideLength The length of the side of the cube to set.
+     */
+    public void setSideLength(double sideLength) {
+        this.sideLength = sideLength;
+    }
+
+    /**
+     * Sets the result of the factorial computation.
+     * @param result The result of the factorial computation.
+     */
+    public void setResult(double result) {
+        this.result = result;
+    }
+    
 
     /**
      * Sets the input values required for computing the volume.
@@ -53,12 +72,13 @@ public class CubeVolEngine implements Computable {
         volume = sideLength * sideLength * sideLength;
     }
 
+
     /**
-     * Returns the name of the engine.
-     * @return The name of the engine.
+     * Returns the calculated volume of the cube.
+     * @return The volume of the cube.
      */
-    public static String getEngineName() {
-        return engineName;
+    public double getVolume() {
+        return volume;
     }
 
     /**
@@ -69,6 +89,13 @@ public class CubeVolEngine implements Computable {
         return sideLength;
     }
 
+    /**
+     * This is getter for input
+     * @return var sideLength
+     */
+    public double getInput(){
+        return sideLength;
+    }
     /**
      * Returns the result of the computation, which is the volume of the cube.
      * @return The volume of the cube.

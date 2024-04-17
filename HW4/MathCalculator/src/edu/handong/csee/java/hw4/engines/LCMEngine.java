@@ -3,14 +3,14 @@ package edu.handong.csee.java.hw4.engines;
 import edu.handong.csee.java.hw4.util.InputChecker;
 
 /**
- * The LCMEngine class calculates the least common multiple (LCM) of multiple integers.
- * This class implements the Computable interface.
+ * The LCMEngine class calculates the least common multiple (LCM) of multiple
+ * integers. This class implements the Computable interface.
  */
 public class LCMEngine implements Computable {
     /**
      * This is the constructor for LCMEngine
      */
-    public LCMEngine(){
+    public LCMEngine() {
 
     }
 
@@ -25,6 +25,7 @@ public class LCMEngine implements Computable {
 
     /**
      * Sets the input values required for calculating the LCM.
+     * 
      * @param args An array of String arguments containing integer values.
      */
     @Override
@@ -39,6 +40,34 @@ public class LCMEngine implements Computable {
     }
 
     /**
+     * Computes the LCM of the input integers.
+     */
+    @Override
+    public void compute() {
+        if (input.length == 0) {
+            result = 1; // LCM of an empty set of numbers is 1
+        } else if (input.length == 1) {
+            result = input[0]; // LCM of a single number is the number itself
+        } else {
+            result = calculateLCM(input);
+        }
+    }
+
+    /**
+     * Calculates the LCM of multiple integers.
+     * 
+     * @param numbers An array of integers.
+     * @return The LCM of the input integers.
+     */
+    private static int calculateLCM(int[] numbers) {
+        int lcm = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
+            lcm = calculateLCM(lcm, numbers[i]);
+        }
+        return lcm;
+    }
+
+    /**
      * Sets the result of the LCM computation.
      * @param result The result of the LCM computation.
      */
@@ -46,16 +75,21 @@ public class LCMEngine implements Computable {
         this.result = result;
     }
 
+
     /**
-     * Computes the LCM of the input integers.
+     * Calculates the LCM of two integers.
+     * 
+     * @param a The first integer.
+     * @param b The second integer.
+     * @return The LCM of the two integers.
      */
-    @Override
-    public void compute() {
-        result = calculateLCM(input);
+    private static int calculateLCM(int a, int b) {
+        return Math.abs(a * b) / calculateGCD(a, b);
     }
 
     /**
      * Calculates the greatest common divisor (GCD) of two integers.
+     * 
      * @param num1 The first integer.
      * @param num2 The second integer.
      * @return The GCD of the two integers.
@@ -69,43 +103,21 @@ public class LCMEngine implements Computable {
         return num1;
     }
 
-    /**
-     * Calculates the LCM of multiple integers.
-     * @param numbers An array of integers.
-     * @return The LCM of the input integers.
-     */
-    public static int calculateLCM(int[] numbers) {
-        if (numbers[0] < 0) {
-            InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
-        }
-        int lcm = numbers[0];
-        for (int i = 1; i < numbers.length; i++) {
-            if (numbers[i] < 0) {
-                InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
-            }
-            lcm = (lcm * numbers[i]) / calculateGCD(lcm, numbers[i]);
-        }
-        return lcm;
-    }
-
-    /**
-     * Returns the name of the engine.
-     * @return The name of the engine.
-     */
-    public static String getEngineName() {
-        return engineName;
-    }
 
     /**
      * Returns the input array containing the integers.
+     * 
      * @return The input array containing the integers.
      */
     public int[] getInput() {
         return input;
     }
 
+    
+
     /**
      * Returns the result of the LCM computation.
+     * 
      * @return The result of the LCM computation.
      */
     @Override

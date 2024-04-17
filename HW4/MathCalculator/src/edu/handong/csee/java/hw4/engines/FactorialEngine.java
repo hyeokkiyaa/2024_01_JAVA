@@ -35,12 +35,21 @@ public class FactorialEngine implements Computable {
         n = Integer.parseInt(args[1]);
     }
 
+    
+
     /**
      * Sets the result of the factorial computation.
      * @param result The result of the factorial computation.
      */
     public void setResult(double result) {
         this.result = result;
+    }
+    /**
+     * This is setter for n input
+     * @param n this is variable of input
+     */
+    public void setN(int n){
+        this.n = n;
     }
 
     /**
@@ -57,19 +66,20 @@ public class FactorialEngine implements Computable {
         }
     }
 
-    /**
-     * Returns the name of the engine.
-     * @return The name of the engine.
-     */
-    public static String getEngineName() {
-        return engineName;
-    }
 
     /**
      * Returns the input value for computing factorial.
      * @return The input value for computing factorial.
      */
     public int getN() {
+        return n;
+    }
+
+    /**
+     * This is getter for input
+     * @return  var of n
+     */
+    public int getInput(){
         return n;
     }
 

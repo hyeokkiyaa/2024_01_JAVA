@@ -45,6 +45,14 @@ public class FibonacciEngine implements Computable {
     }
 
     /**
+     * This is setter for n input
+     * @param n this var is for input of n
+     */
+    public void setN(int n){
+        this.n = n;
+    }
+
+    /**
      * Computes the Fibonacci sequence up to the specified term.
      */
     @Override
@@ -69,18 +77,18 @@ public class FibonacciEngine implements Computable {
     }
 
     /**
-     * Returns the name of the engine.
-     * @return The name of the engine.
-     */
-    public static String getEngineName() {
-        return engineName;
-    }
-
-    /**
      * Returns the input value specifying the term of the Fibonacci sequence.
      * @return The input value specifying the term of the Fibonacci sequence.
      */
     public int getN() {
+        return n;
+    }
+
+    /**
+     * This is getter for input
+     * @return  var of n
+     */
+    public int getInput(){
         return n;
     }
 

@@ -84,13 +84,6 @@ public class GCDEngine implements Computable {
         return num1;
     }
 
-    /**
-     * Returns the name of the engine.
-     * @return The name of the engine.
-     */
-    public static String getEngineName() {
-        return engineName;
-    }
 
     /**
      * Returns the input array containing the integers.

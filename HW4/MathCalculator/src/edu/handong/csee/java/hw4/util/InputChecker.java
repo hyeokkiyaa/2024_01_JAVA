@@ -40,7 +40,7 @@ public class InputChecker {
      * @param engineName The name of the engine for which negative inputs were provided.
      */
     public static void printErrorMesssageForNegativeInputsAndExit(String engineName) {
-        System.out.println("Input values for " + engineName.toUpperCase() + " cannot be negative.");
+        System.out.println("The input value cannot be negative for "+ engineName+".");
         System.exit(0);
     }
 }

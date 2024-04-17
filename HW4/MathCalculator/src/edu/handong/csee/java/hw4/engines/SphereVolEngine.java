@@ -45,6 +45,14 @@ public class SphereVolEngine implements Computable {
     }
 
     /**
+     * This is setter for radius
+     * @param radius   the radius of the sphere input
+     */
+    public void setRadius(double radius){
+        this.radius = radius;
+    }
+
+    /**
      * Computes the volume of the sphere.
      */
     @Override
@@ -52,13 +60,6 @@ public class SphereVolEngine implements Computable {
         result = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
     }
 
-    /**
-     * Returns the name of the engine.
-     * @return The name of the engine.
-     */
-    public static String getEngineName() {
-        return engineName;
-    }
 
     /**
      * Returns the radius of the sphere.
@@ -68,6 +69,13 @@ public class SphereVolEngine implements Computable {
         return radius;
     }
 
+    /**
+     * This is getter for input
+     * @return var radius
+     */
+    public double getInput(){
+        return radius;
+    }
     /**
      * Returns the result of the sphere volume computation.
      * @return The result of the sphere volume computation.

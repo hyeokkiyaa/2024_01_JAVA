@@ -54,14 +54,6 @@ public class SQRTEngine implements Computable {
     }
 
     /**
-     * Returns the name of the engine.
-     * @return The name of the engine.
-     */
-    public static String getEnginename() {
-        return engineName;
-    }
-
-    /**
      * Returns the input value for computing the square root.
      * @return The input value for computing the square root.
      */
