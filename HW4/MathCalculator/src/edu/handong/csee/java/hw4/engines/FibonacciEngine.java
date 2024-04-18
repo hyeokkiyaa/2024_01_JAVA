@@ -7,9 +7,8 @@ import edu.handong.csee.java.hw4.util.InputChecker;
  * This class implements the Computable interface.
  */
 public class FibonacciEngine implements Computable {
-
     /** The name of the engine. */
-    private static final String engineName = "FIBONACCI";
+    private static final String ENGINE_NAME = "FIBONACCI";
 
     /** The input value specifying the term of the Fibonacci sequence to calculate. */
     private int n;
@@ -18,38 +17,15 @@ public class FibonacciEngine implements Computable {
     private double result;
 
     /**
-     * Constructs a FibonacciEngine object with default values.
-     * The default value for 'n' is set to 0.
-     */
-    public FibonacciEngine() {
-    }
-
-    /**
      * Sets the input value required for calculating the Fibonacci sequence.
      * @param args An array of String arguments containing the integer value.
      */
     @Override
     public void setInput(String[] args) {
         if (args.length != 2) {
-            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(engineName, 1);
+            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(ENGINE_NAME, 1);
         }
         n = Integer.parseInt(args[1]);
-    }
-
-    /**
-     * Sets the result of the Fibonacci sequence calculation.
-     * @param result The result of the Fibonacci sequence calculation.
-     */
-    public void setResult(double result) {
-        this.result = result;
-    }
-
-    /**
-     * This is setter for n input
-     * @param n this var is for input of n
-     */
-    public void setN(int n){
-        this.n = n;
     }
 
     /**
@@ -58,7 +34,7 @@ public class FibonacciEngine implements Computable {
     @Override
     public void compute() {
         if (n < 0) {
-            InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
+            InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
         }
         result = fibonacci(n);
     }
@@ -97,7 +73,7 @@ public class FibonacciEngine implements Computable {
      * @return The result of the Fibonacci sequence calculation.
      */
     @Override
-    public Number getResult() {
-        return Double.valueOf(result);
+    public double getResult() {
+        return result;
     }
 }

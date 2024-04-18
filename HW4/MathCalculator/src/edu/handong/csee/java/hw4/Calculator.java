@@ -34,7 +34,11 @@ public class Calculator {
      * @param args The command-line arguments passed when the program starts.
      */
     public void run(String[] args) {
-        
+        if(args.length==0){
+            System.out.println("Please put a computing engine option such as LCM, GCD, SQRT, FACTORIAL, FIBONACCI, MAX, MIN, CUBEVOL, and SPHEREVOL.");
+            System.out.println("For example, java -cp [your classpath] edu.handong.csee.java.hw4.Calculator MAX 12 4 5 45 100");
+            System.exit(0); 
+        }
         // Converts the first argument to uppercase to match the engine names.
         String engineName = args[0].toUpperCase();
 

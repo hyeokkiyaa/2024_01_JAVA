@@ -7,15 +7,8 @@ import edu.handong.csee.java.hw4.util.InputChecker;
  * This class implements the Computable interface.
  */
 public class FactorialEngine implements Computable {
-    /**
-     * This is the constructor of FactorialEngine
-     */
-    public FactorialEngine(){
-
-    }
-
     /** The name of the engine. */
-    private static final String engineName = "FACTORIAL";
+    private static final String ENGINE_NAME = "FACTORIAL";
 
     /** The input value for computing factorial. */
     private int n;
@@ -30,26 +23,9 @@ public class FactorialEngine implements Computable {
     @Override
     public void setInput(String[] args) {
         if (args.length != 2) {
-            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(engineName, 1);
+            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(ENGINE_NAME, 1);
         }
         n = Integer.parseInt(args[1]);
-    }
-
-    
-
-    /**
-     * Sets the result of the factorial computation.
-     * @param result The result of the factorial computation.
-     */
-    public void setResult(double result) {
-        this.result = result;
-    }
-    /**
-     * This is setter for n input
-     * @param n this is variable of input
-     */
-    public void setN(int n){
-        this.n = n;
     }
 
     /**
@@ -58,14 +34,13 @@ public class FactorialEngine implements Computable {
     @Override
     public void compute() {
         if (n < 0) {
-            InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
+            InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
         }
         result = 1; // Initialize result to 1
         for (int i = 2; i <= n; i++) { // Multiply numbers from 2 to n
             result *= i;
         }
     }
-
 
     /**
      * Returns the input value for computing factorial.
@@ -88,8 +63,7 @@ public class FactorialEngine implements Computable {
      * @return The result of the factorial computation.
      */
     @Override
-    public Number getResult() {
-        return Double.valueOf(result);
+    public double getResult() {
+        return result;
     }
 }
-

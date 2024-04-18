@@ -8,13 +8,8 @@ import edu.handong.csee.java.hw4.util.InputChecker;
  */
 public class SQRTEngine implements Computable {
 
-    /** This is the constructor for SQRTEngine */
-    public SQRTEngine(){
-        
-    }
-
     /** The name of the engine. */
-    private static final String engineName = "SQRT";
+    private static final String ENGINE_NAME = "SQRT";
 
     /** The input value for computing the square root. */
     private double input;
@@ -29,20 +24,12 @@ public class SQRTEngine implements Computable {
     @Override
     public void setInput(String[] args) {
         if (args.length != 2) {
-            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(engineName, 1);
+            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(ENGINE_NAME, 1);
         }
         input = Double.parseDouble(args[1]);
         if (input < 0) {
-            InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
+            InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
         }
-    }
-
-    /**
-     * Sets the result of the square root computation.
-     * @param result The result of the square root computation.
-     */
-    public void setResult(double result) {
-        this.result = result;
     }
 
     /**
@@ -66,7 +53,7 @@ public class SQRTEngine implements Computable {
      * @return The result of the square root computation.
      */
     @Override
-    public Number getResult() {
-        return Double.valueOf(result);
+    public double getResult() {
+        return result;
     }
 }

@@ -1,18 +1,15 @@
 package edu.handong.csee.java.hw4.engines;
 
 import edu.handong.csee.java.hw4.util.InputChecker;
+
 /**
  * The MaxEngine class calculates the maximum value among multiple doubles.
  * This class implements the Computable interface.
  */
 public class MaxEngine implements Computable {
 
-    /** This is the constructor for MaxEngine. */
-    public MaxEngine(){
-        
-    }
     /** The name of the engine. */
-    private static final String engineName = "MAX";
+    private static final String ENGINE_NAME = "MAX";
 
     /** The input array containing the doubles to find the maximum value. */
     private double[] input;
@@ -27,7 +24,7 @@ public class MaxEngine implements Computable {
     @Override
     public void setInput(String[] args) {
         if (args.length < 3) { // The engine name and at least one number value should be received.
-            InputChecker.printErrorMessageForTheNumberOfMinimumRequiredInputsAndExit(engineName, 2);
+            InputChecker.printErrorMessageForTheNumberOfMinimumRequiredInputsAndExit(ENGINE_NAME, 2);
         }
         input = new double[args.length - 1];
         for (int i = 1; i < args.length; i++) { // Start from i = 1 since args[0] is the engine name.
@@ -36,32 +33,17 @@ public class MaxEngine implements Computable {
     }
 
     /**
-     * Sets the result of the maximum value computation.
-     * @param result The result of the maximum value computation.
-     */
-    public void setResult(double result) {
-        this.result = result;
-    }
-
-    /**
      * Computes the maximum value among the input doubles.
      */
     @Override
     public void compute() {
-        result = input[0];
-        if (result < 0) {
-            InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
-        }
-        for (int i = 1; i < input.length; i++) {
-            if (input[i] < 0) {
-                InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
-            }
+        result = input[0];   
+        for (int i = 1; i < input.length; i++) {         
             if (input[i] > result) {
                 result = input[i];
             }
         }
     }
-
 
     /**
      * Returns the input array containing the doubles.
@@ -76,7 +58,7 @@ public class MaxEngine implements Computable {
      * @return The result of the maximum value computation.
      */
     @Override
-    public Number getResult() {
-        return Double.valueOf(result); // Return the double value of result.
+    public double getResult() {
+        return result; // Return the double value of result.
     }
 }

@@ -7,14 +7,8 @@ import edu.handong.csee.java.hw4.util.InputChecker;
  * This class implements the Computable interface.
  */
 public class GCDEngine implements Computable {
-    /**
-     * This is the constructor for GCDEngine
-     */
-    public GCDEngine(){
-
-    }
     /** The name of the engine. */
-    private static final String engineName = "GCD";
+    private static final String ENGINE_NAME = "GCD";
 
     /** The input array containing the integers to compute the GCD. */
     private int[] input;
@@ -29,20 +23,15 @@ public class GCDEngine implements Computable {
     @Override
     public void setInput(String[] args) {
         if (args.length < 3) {
-            InputChecker.printErrorMessageForTheNumberOfMinimumRequiredInputsAndExit(engineName, 2);
+            InputChecker.printErrorMessageForTheNumberOfMinimumRequiredInputsAndExit(ENGINE_NAME, 2);
         }
         input = new int[args.length - 1];
         for (int i = 1; i < args.length; i++) {
             input[i - 1] = Integer.parseInt(args[i]);
+            if(input[i-1]<0){
+                InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
+            }
         }
-    }
-
-    /**
-     * Sets the result of the GCD computation.
-     * @param result The result of the GCD computation.
-     */
-    public void setResult(int result) {
-        this.result = result;
     }
 
     /**
@@ -62,7 +51,7 @@ public class GCDEngine implements Computable {
         int answer = input[0];
         for (int i = 1; i < input.length; i++) {
             if (input[i] < 0) {
-                InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
+                InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
             }
             answer = calculateGCD(answer, input[i]);
         }
@@ -84,7 +73,6 @@ public class GCDEngine implements Computable {
         return num1;
     }
 
-
     /**
      * Returns the input array containing the integers.
      * @return The input array containing the integers.
@@ -98,7 +86,7 @@ public class GCDEngine implements Computable {
      * @return The result of the GCD computation.
      */
     @Override
-    public Number getResult() {
-        return Integer.valueOf(result);
+    public double getResult() {
+        return result;
     }
 }

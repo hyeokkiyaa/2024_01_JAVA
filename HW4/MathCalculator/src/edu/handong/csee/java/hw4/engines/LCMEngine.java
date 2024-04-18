@@ -7,15 +7,8 @@ import edu.handong.csee.java.hw4.util.InputChecker;
  * integers. This class implements the Computable interface.
  */
 public class LCMEngine implements Computable {
-    /**
-     * This is the constructor for LCMEngine
-     */
-    public LCMEngine() {
-
-    }
-
     /** The name of the engine. */
-    private static final String engineName = "LCM";
+    private static final String ENGINE_NAME = "LCM";
 
     /** The input array containing the integers to compute the LCM. */
     private int[] input;
@@ -31,11 +24,14 @@ public class LCMEngine implements Computable {
     @Override
     public void setInput(String[] args) {
         if (args.length < 3) {
-            InputChecker.printErrorMessageForTheNumberOfMinimumRequiredInputsAndExit(engineName, 2);
+            InputChecker.printErrorMessageForTheNumberOfMinimumRequiredInputsAndExit(ENGINE_NAME, 2);
         }
         input = new int[args.length - 1];
         for (int i = 1; i < args.length; i++) {
             input[i - 1] = Integer.parseInt(args[i]);
+            if(input[i-1]<0){
+                InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
+            }
         }
     }
 
@@ -121,7 +117,7 @@ public class LCMEngine implements Computable {
      * @return The result of the LCM computation.
      */
     @Override
-    public Number getResult() {
-        return Integer.valueOf(result);
+    public double getResult() {
+        return result;
     }
 }

@@ -8,12 +8,8 @@ import edu.handong.csee.java.hw4.util.InputChecker;
  */
 public class SphereVolEngine implements Computable {
 
-    /** This is the constructor for ShpereVolEngine */
-    public SphereVolEngine(){
-        
-    }
     /** The name of the engine. */
-    private static final String engineName = "SPHEREVOL";
+    private static final String ENGINE_NAME = "SPHEREVOL";
 
     /** The radius of the sphere. */
     private double radius;
@@ -28,28 +24,12 @@ public class SphereVolEngine implements Computable {
     @Override
     public void setInput(String[] args) {
         if (args.length != 2) {
-            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(engineName, 1);
+            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(ENGINE_NAME, 1);
         }
         radius = Double.parseDouble(args[1]);
         if (radius < 0) {
-            InputChecker.printErrorMesssageForNegativeInputsAndExit(engineName);
+            InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
         }
-    }
-
-    /**
-     * Sets the result of the sphere volume computation.
-     * @param result The result of the sphere volume computation.
-     */
-    public void setResult(double result) {
-        this.result = result;
-    }
-
-    /**
-     * This is setter for radius
-     * @param radius   the radius of the sphere input
-     */
-    public void setRadius(double radius){
-        this.radius = radius;
     }
 
     /**
@@ -59,7 +39,6 @@ public class SphereVolEngine implements Computable {
     public void compute() {
         result = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
     }
-
 
     /**
      * Returns the radius of the sphere.
@@ -76,13 +55,13 @@ public class SphereVolEngine implements Computable {
     public double getInput(){
         return radius;
     }
+
     /**
      * Returns the result of the sphere volume computation.
      * @return The result of the sphere volume computation.
      */
     @Override
-    public Number getResult() {
-        return Double.valueOf(result);
+    public double getResult() {
+        return result;
     }
 }
-

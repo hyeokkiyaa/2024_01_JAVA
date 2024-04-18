@@ -21,5 +21,5 @@ public interface Computable {
      * Returns the result of the computation.
      * @return The result of the computation.
      */
-    Number getResult();
+    double getResult();
 }
