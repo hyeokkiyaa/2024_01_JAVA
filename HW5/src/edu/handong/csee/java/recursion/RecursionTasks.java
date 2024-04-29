@@ -3,6 +3,7 @@ package edu.handong.csee.java.recursion;
 public class RecursionTasks {
     private String taskName;
     private String[] input = new String[3];
+    private String inputForString = "";
     private int inputForIntegerFunction = 0;
     private String result;
 
@@ -24,7 +25,7 @@ public class RecursionTasks {
             case "STRINGCLEAN":
             case "DECIDESTRUBG":
             case "PARSEBOOLEXPR":
-                input[0] = args[1];
+                inputForString = args[1];
                 break;
             case "STRDIST":
                 input[0] = args[1];
@@ -62,8 +63,10 @@ public class RecursionTasks {
                 result = Integer.toString(bunnyEars(inputForIntegerFunction));
                 break;
             case "DECIMAL2BINARY":
+
                 break;
             case "COUNTHI":
+                result = Integer.toString(countHi(inputForString));
                 break;
             case "CHANGEPI":
                 break;
@@ -100,11 +103,26 @@ public class RecursionTasks {
         }
     }
 
-    public int countHi(String[] text){
-        if (text[0].length() <2){
+    public int countHi(String text) {
+        if (text.length() < 2) {
             return 0;
         } else {
-            
+            int index = -1;
+            for (int i = 0; i < text.length(); i++) {
+                if (text.charAt(i) == 'h') {
+                    if (i + 1 < text.length() && text.charAt(i + 1) == 'i') {
+                        i++;
+                        index = i;
+                        break;
+                    }
+
+                }
+            }
+            if (index == -1) {
+                return 0;
+            } else {
+                return 1 + countHi(text.substring(index));
+            }
         }
     }
 }
