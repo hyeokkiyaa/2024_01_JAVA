@@ -125,4 +125,24 @@ public class RecursionTasks {
             }
         }
     }
+
+    public String changePi(String text) {
+        if (text.length() == 0) {
+            return "";
+        } else if (text.length() == 1) {
+            return Character.toString(text.charAt(0));
+        } else {
+            int index = -1;
+            for (int i = 0; i < text.length(); i++) {
+                if (text.charAt(i) == 'p') {
+                    if (i + 1 < text.length() && text.charAt(i + 1) == 'i') {
+                        i++;
+                        index = i;
+                        break;
+                    }
+
+                }
+            }
+        }
+    }
 }
