@@ -1,6 +1,7 @@
 package edu.handong.csee.java.recursion;
 
-import javax.swing.plaf.ComponentUI;
+
+import java.util.Arrays;
 
 import edu.handong.csee.java.recursion.RecursionTasks;
 
@@ -14,6 +15,7 @@ public class RecursionDemonstrator{
         RecursionTasks recursion = new RecursionTasks();
         recursion.setTaskName(args[0].toUpperCase());
         recursion.setInput(args);
-
+        recursion.compute();
+        System.out.println(recursion.getResult());
     }
 }

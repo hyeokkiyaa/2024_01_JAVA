@@ -1,8 +1,9 @@
 package edu.handong.csee.java.recursion;
 
+
 public class RecursionTasks {
     private String taskName;
-    private String[] input;
+    private String[] input = new String[3];
     private int inputForIntegerFunction = 0;
     private String result;
 
@@ -10,30 +11,27 @@ public class RecursionTasks {
         this.taskName = taskName;
     }
 
-    public void setInput(String[] inputMain) {
-        setTaskName(inputMain[0]);
+    public void setInput(String[] args) {
+        taskName = getTaskName();
         switch (taskName) {
             case "FACTORIAL":
             case "BUNNYEARS":
             case "DECIMAL2BINARY":
-                
-                inputForIntegerFunction = Integer.parseInt(inputMain[1]);
+                inputForIntegerFunction = Integer.parseInt(args[1]);
                 break;
-
             case "COUNTHI":
             case "CHANGEPI":
             case "ENDX":
             case "STRINGCLEAN":
             case "DECIDESTRUBG":
             case "PARSEBOOLEXPR":
-                input[0] = inputMain[1];
+                input[0] = args[1];
+                break;
+            case "STRDIST":
+                input[0] = args[1];
+                input[1] = args[2];
                 break;
 
-            case "STRDIST":
-                input[0] = inputMain[1];
-                input[1] = inputMain[2];
-                break;
-            
             default:
                 System.out.println("Function name does not exist");
                 System.exit(0);
@@ -56,39 +54,37 @@ public class RecursionTasks {
         return result;
     }
 
-    public void compute(){
+    public void compute() {
         switch (taskName) {
             case "FACTORIAL":
                 result = Integer.toString(factorial(inputForIntegerFunction));
+                break;
             case "BUNNYEARS":
+                break;
             case "DECIMAL2BINARY":
-
-                inputForIntegerFunction = Integer.parseInt(inputMain[1]);
                 break;
-
             case "COUNTHI":
+                break;
             case "CHANGEPI":
+                break;
             case "ENDX":
+                break;
             case "STRINGCLEAN":
+                break;
             case "DECIDESTRUBG":
+                break;
             case "PARSEBOOLEXPR":
-                input[0] = inputMain[1];
                 break;
-
             case "STRDIST":
-                input[0] = inputMain[1];
-                input[1] = inputMain[2];
                 break;
-
-            default:
-                System.out.println("Function name does not exist");
-                System.exit(0);
         }
-        inputForIntegerFunction = 0;
     }
 
     public int factorial(int num) {
-
-        return 0;
+        if (num == 1) {
+            return 1;
+        } else {
+            return num * factorial(num - 1);
+        }
     }
 }
