@@ -1,6 +1,5 @@
 package edu.handong.csee.java.recursion;
 
-
 public class RecursionTasks {
     private String taskName;
     private String[] input = new String[3];
@@ -60,6 +59,7 @@ public class RecursionTasks {
                 result = Integer.toString(factorial(inputForIntegerFunction));
                 break;
             case "BUNNYEARS":
+                result = Integer.toString(bunnyEars(inputForIntegerFunction));
                 break;
             case "DECIMAL2BINARY":
                 break;
@@ -85,6 +85,18 @@ public class RecursionTasks {
             return 1;
         } else {
             return num * factorial(num - 1);
+        }
+    }
+
+    public int bunnyEars(int num) {
+        if (num == 0) {
+            return 0;
+        } else {
+            if (num % 2 == 0) {
+                return 3 + bunnyEars(num - 1);
+            } else {
+                return 2 + bunnyEars(num - 1);
+            }
         }
     }
 }
