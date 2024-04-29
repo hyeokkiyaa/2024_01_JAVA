@@ -99,4 +99,12 @@ public class RecursionTasks {
             }
         }
     }
+
+    public int countHi(String[] text){
+        if (text[0].length() <2){
+            return 0;
+        } else {
+            
+        }
+    }
 }
