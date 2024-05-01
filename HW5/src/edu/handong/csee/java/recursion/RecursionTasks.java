@@ -146,7 +146,7 @@ public class RecursionTasks {
         } else {
             for(int i=0;i<text.length()-1;i++){
                 if(text.charAt(i)=='x'){
-                    return endX(text.substring(i+1))+ 'x';
+                    return text.substring(0,i)+ endX(text.substring(i+1))+ 'x';
                 }
             }
             return text.charAt(0) + endX(text.substring(1));
