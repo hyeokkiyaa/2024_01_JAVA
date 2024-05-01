@@ -69,8 +69,10 @@ public class RecursionTasks {
                 result = Integer.toString(countHi(inputForString));
                 break;
             case "CHANGEPI":
+                result = changePi(inputForString);
                 break;
             case "ENDX":
+                result = endX(inputForString);
                 break;
             case "STRINGCLEAN":
                 break;
@@ -115,11 +117,10 @@ public class RecursionTasks {
                         index = i;
                         break;
                     }
-
                 }
             }
             if (index == -1) {
-                return 0;
+                return 0 + countHi(text.substring(1));
             } else {
                 return 1 + countHi(text.substring(index));
             }
@@ -127,22 +128,28 @@ public class RecursionTasks {
     }
 
     public String changePi(String text) {
-        if (text.length() == 0) {
-            return "";
-        } else if (text.length() == 1) {
-            return Character.toString(text.charAt(0));
+        if (text.length() < 2) {
+            return text;
         } else {
-            int index = -1;
-            for (int i = 0; i < text.length(); i++) {
-                if (text.charAt(i) == 'p') {
-                    if (i + 1 < text.length() && text.charAt(i + 1) == 'i') {
-                        i++;
-                        index = i;
-                        break;
-                    }
-
+            for (int i = 0; i < text.length() - 1; i++) {
+                if (text.charAt(i) == 'p' && text.charAt(i + 1) == 'i') {
+                    return text.substring(0,i)+"3.14" + changePi(text.substring(i + 2));
                 }
             }
+            return text.charAt(0) + changePi(text.substring(1));
+        }
+    }
+
+    public String endX(String text){
+        if(text.length()<2){
+            return text;
+        } else {
+            for(int i=0;i<text.length()-1;i++){
+                if(text.charAt(i)=='x'){
+                    return endX(text.substring(i+1))+ 'x';
+                }
+            }
+            return text.charAt(0) + endX(text.substring(1));
         }
     }
 }
