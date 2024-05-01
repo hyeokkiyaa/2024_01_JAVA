@@ -75,6 +75,7 @@ public class RecursionTasks {
                 result = endX(inputForString);
                 break;
             case "STRINGCLEAN":
+                result = stringClean(inputForString);
                 break;
             case "DECIDESTRUBG":
                 break;
@@ -133,23 +134,48 @@ public class RecursionTasks {
         } else {
             for (int i = 0; i < text.length() - 1; i++) {
                 if (text.charAt(i) == 'p' && text.charAt(i + 1) == 'i') {
-                    return text.substring(0,i)+"3.14" + changePi(text.substring(i + 2));
+                    return text.substring(0, i) + "3.14" + changePi(text.substring(i + 2));
                 }
             }
             return text.charAt(0) + changePi(text.substring(1));
         }
     }
 
-    public String endX(String text){
-        if(text.length()<2){
+    public String endX(String text) {
+        if (text.length() < 2) {
             return text;
         } else {
-            for(int i=0;i<text.length()-1;i++){
-                if(text.charAt(i)=='x'){
-                    return text.substring(0,i)+ endX(text.substring(i+1))+ 'x';
+            for (int i = 0; i < text.length() - 1; i++) {
+                if (text.charAt(i) == 'x') {
+                    return text.substring(0, i) + endX(text.substring(i + 1)) + 'x';
                 }
             }
             return text.charAt(0) + endX(text.substring(1));
         }
     }
+
+    public String stringClean(String text) {
+        if (text.length() < 2) {
+            return text;
+        } else {
+            int i = 0;
+            while (i < text.length() - 1) {
+                int shift = 0;
+                while (i + shift < text.length() - 1 && text.charAt(i + shift) == text.charAt(i + 1 + shift)) {
+                    shift++;
+                }
+                i += shift;
+                if (shift != 0) {
+                    if (i + 1 < text.length()) {
+                        return text.charAt(i) + stringClean(text.substring(i + 1));
+                    } else {
+                        return Character.toString(text.charAt(i));
+                    }
+                }
+                i++;
+            }
+            return text.charAt(0) + stringClean(text.substring(1));
+        }
+    }
+    
 }
