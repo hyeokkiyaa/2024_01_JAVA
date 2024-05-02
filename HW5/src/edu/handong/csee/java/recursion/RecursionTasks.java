@@ -155,27 +155,14 @@ public class RecursionTasks {
     }
 
     public String stringClean(String text) {
-        if (text.length() < 2) {
+        if (text.isEmpty() || text.length() == 1) {
             return text;
+        }
+        if (text.charAt(0) == text.charAt(1)) {
+            return stringClean(text.substring(1));
         } else {
-            int i = 0;
-            while (i < text.length() - 1) {
-                int shift = 0;
-                while (i + shift < text.length() - 1 && text.charAt(i + shift) == text.charAt(i + 1 + shift)) {
-                    shift++;
-                }
-                i += shift;
-                if (shift != 0) {
-                    if (i + 1 < text.length()) {
-                        return text.charAt(i) + stringClean(text.substring(i + 1));
-                    } else {
-                        return Character.toString(text.charAt(i));
-                    }
-                }
-                i++;
-            }
             return text.charAt(0) + stringClean(text.substring(1));
         }
     }
-    
+
 }
