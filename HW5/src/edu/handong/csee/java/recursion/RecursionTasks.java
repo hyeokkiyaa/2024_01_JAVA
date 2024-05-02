@@ -63,7 +63,7 @@ public class RecursionTasks {
                 result = Integer.toString(bunnyEars(inputForIntegerFunction));
                 break;
             case "DECIMAL2BINARY":
-
+                result = decimal2binary(inputForIntegerFunction);
                 break;
             case "COUNTHI":
                 result = Integer.toString(countHi(inputForString));
@@ -82,6 +82,7 @@ public class RecursionTasks {
             case "PARSEBOOLEXPR":
                 break;
             case "STRDIST":
+                result = Integer.toString(strDist(input));
                 break;
         }
     }
@@ -165,4 +166,41 @@ public class RecursionTasks {
         }
     }
 
+    public int strDist(String[] text) {
+        String first = text[0];
+        String sub = text[1];
+        if (first.isEmpty()) {
+            return 0;
+        } else if (sub.isEmpty()) {
+            return first.length();
+        }
+
+        String comparefirst = first.substring(0, sub.length());
+        String comparelast = first.substring(first.length()-sub.length());
+        if(comparefirst.equals(sub)&& comparelast.equals(sub)){
+            return first.length();
+        } 
+
+        if (!comparefirst.equals(sub)){
+            first = first.substring(1);
+            text[0] = first;
+            return strDist(text);
+        } else {
+            first = first.substring(0,first.length()-1);
+            text[0] = first;
+            return strDist(text);
+        }
+    }
+
+    public String decimal2binary(int num){
+        if (num==0){
+            return Integer.toString(num);
+        }
+        int AddToResult = num/2;
+        if (AddToResult==0){
+            return Integer.toString(num%2);
+        }
+        int result = num%2;
+        return decimal2binary(AddToResult)+Integer.toString(result); 
+    }
 }
