@@ -23,7 +23,7 @@ public class RecursionTasks {
             case "CHANGEPI":
             case "ENDX":
             case "STRINGCLEAN":
-            case "DECIDESTRUBG":
+            case "DECODESTRING":
             case "PARSEBOOLEXPR":
                 inputForString = args[1];
                 break;
@@ -77,7 +77,8 @@ public class RecursionTasks {
             case "STRINGCLEAN":
                 result = stringClean(inputForString);
                 break;
-            case "DECIDESTRUBG":
+            case "DECODESTRING":
+                result = decodeString(inputForString);
                 break;
             case "PARSEBOOLEXPR":
                 break;
@@ -129,7 +130,9 @@ public class RecursionTasks {
         }
     }
 
+
     public String changePi(String text) {
+        //HELP from AI
         if (text.length() < 2) {
             return text;
         } else {
@@ -140,6 +143,7 @@ public class RecursionTasks {
             }
             return text.charAt(0) + changePi(text.substring(1));
         }
+
     }
 
     public String endX(String text) {
@@ -167,6 +171,7 @@ public class RecursionTasks {
     }
 
     public int strDist(String[] text) {
+        //HELP FROM AI
         String first = text[0];
         String sub = text[1];
         if (first.isEmpty()) {
@@ -176,31 +181,74 @@ public class RecursionTasks {
         }
 
         String comparefirst = first.substring(0, sub.length());
-        String comparelast = first.substring(first.length()-sub.length());
-        if(comparefirst.equals(sub)&& comparelast.equals(sub)){
+        String comparelast = first.substring(first.length() - sub.length());
+        if (comparefirst.equals(sub) && comparelast.equals(sub)) {
             return first.length();
-        } 
+        }
 
-        if (!comparefirst.equals(sub)){
+        if (!comparefirst.equals(sub)) {
             first = first.substring(1);
             text[0] = first;
             return strDist(text);
         } else {
-            first = first.substring(0,first.length()-1);
+            first = first.substring(0, first.length() - 1);
             text[0] = first;
             return strDist(text);
         }
     }
 
-    public String decimal2binary(int num){
-        if (num==0){
+    public String decimal2binary(int num) {
+        if (num == 0) {
             return Integer.toString(num);
         }
-        int AddToResult = num/2;
-        if (AddToResult==0){
-            return Integer.toString(num%2);
+        int AddToResult = num / 2;
+        if (AddToResult == 0) {
+            return Integer.toString(num % 2);
         }
-        int result = num%2;
-        return decimal2binary(AddToResult)+Integer.toString(result); 
+        int result = num % 2;
+        return decimal2binary(AddToResult) + Integer.toString(result);
     }
+
+    public String decodeString(String text) {
+        //HELP FROM AI
+        if (text.isEmpty()) {
+            return "";
+        }
+    
+        String result ="";
+        int num = 0;
+        int i = 0;
+
+        while (i < text.length()) {
+            char ch = text.charAt(i);
+
+            if (Character.isDigit(ch)) {
+                num = num * 10 + (ch - '0');
+            } else if (ch == '[') {
+                int j = i + 1;
+                int bracketCount = 1;
+                while (bracketCount != 0) {
+                    if (text.charAt(j) == '[') {
+                        bracketCount++;
+                    } else if (text.charAt(j) == ']') {
+                        bracketCount--;
+                    }
+                    j++;
+                }
+                String decodedString = decodeString(text.substring(i + 1, j - 1));
+                for (int k = 0; k < num; k++) {
+                    result += decodedString;
+                }
+                num = 0;
+                i = j - 1;
+            } else {
+                result += Character.toString(ch);
+            }
+
+            i++;
+        }
+
+        return result;
+    }
+
 }
