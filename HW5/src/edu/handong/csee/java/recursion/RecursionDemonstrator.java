@@ -32,7 +32,7 @@ public class RecursionDemonstrator {
             System.out.println("Please put a computing recursion task option such as factorial, bunnyEars, countHi, changePi, endX, stringClean, strDist, decimal2binary, decodeString and parseBoolExpr. For example, java -cp [your classpath]\n edu.handong.csee.java.recursion.RecursionDemonstrator factorial 10");
         }
         recursion.setTaskName(args[0]);
-        recursion.setInputArgs(args);
+        recursion.inputAllocate(args);
         recursion.compute();
         System.out.println(recursion.getResult());
     }

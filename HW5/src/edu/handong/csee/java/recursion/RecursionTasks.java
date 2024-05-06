@@ -4,10 +4,11 @@ package edu.handong.csee.java.recursion;
  * This class contains various recursive methods for different tasks.
  */
 public class RecursionTasks {
-    /**Constructor for RecursionTasks class */
-    RecursionTasks(){
+    /** Constructor for RecursionTasks class */
+    RecursionTasks() {
 
     }
+
     /** Task Name */
     private String taskName;
     /** input string from args */
@@ -56,25 +57,27 @@ public class RecursionTasks {
     }
 
     /**
- * Set the task name.
- * 
- * @param taskName the task name to set
- */
-public void setTaskName(String taskName) {
-    if(this.taskName == null || this.taskName.isEmpty()) {
+     * Set the task name.
+     * 
+     * @param taskName the task name to set
+     */
+    public void setTaskName(String taskName) {
         this.taskName = taskName;
-    } else {
-        System.out.println("Task name is already set."); // 또는 예외를 던지는 것도 가능
     }
-}
-
 
     /**
-     * Set the input parameters.
-     * 
-     * @param args the input parameters
+     * This is setter for setInputArgs
+     * @param inputArgs this String array sets input
      */
-    public void setInputArgs(String[] args) {
+    public void setInputArgs(String[] inputArgs) {
+        this.inputArgs = inputArgs;
+    }
+
+    /**
+     * This changes args into suitable variable types
+     * @param args String array to get value from users
+     */
+    public void inputAllocate(String[] args) {
         taskName = getTaskName();
         switch (taskName) {
             case "factorial":
@@ -125,7 +128,7 @@ public void setTaskName(String taskName) {
      * @return the input parameters
      */
     public String[] getInputArgs() {
-        return inputArgs.clone();
+        return inputArgs;
     }
 
     /**
