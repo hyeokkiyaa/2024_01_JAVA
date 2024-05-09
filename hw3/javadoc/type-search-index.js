@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"edu.handong.csee.java.encapsulation","l":"CreateObjectDemonstrator"},{"p":"edu.handong.csee.java.encapsulation.shapes","l":"Point"},{"p":"edu.handong.csee.java.encapsulation.shapes","l":"Rectangle"}];updateSearchResults();
