@@ -1,5 +1,6 @@
 package edu.handong.csee.java.hw6.engines;
 
+import edu.handong.csee.java.hw6.exceptions.MyNumberFormatException;
 import edu.handong.csee.java.hw6.exceptions.NegativeNumberException;
 import edu.handong.csee.java.hw6.exceptions.OneInputException;
 
@@ -28,6 +29,12 @@ public class SphereVolEngine implements Computable {
             if (args.length != 2) {
                 throw new OneInputException(ENGINE_NAME);
             }
+            String value = args[1];
+            for (int i = 0; i < value.length(); i++) {
+                if (Character.isAlphabetic(value.charAt(i))) {
+                    throw new MyNumberFormatException(ENGINE_NAME, value);
+                }
+            }
             radius = Double.parseDouble(args[1]);
             if (radius < 0) {
                 throw new NegativeNumberException(ENGINE_NAME);
@@ -36,6 +43,9 @@ public class SphereVolEngine implements Computable {
             System.out.println(e.getMessage());
             System.exit(0);
         } catch (NegativeNumberException e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
+        } catch (MyNumberFormatException e){
             System.out.println(e.getMessage());
             System.exit(0);
         }

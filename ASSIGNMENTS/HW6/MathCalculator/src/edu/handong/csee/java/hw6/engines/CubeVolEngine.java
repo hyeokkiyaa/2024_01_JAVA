@@ -3,7 +3,8 @@ package edu.handong.csee.java.hw6.engines;
 import edu.handong.csee.java.hw6.exceptions.*;
 
 /**
- * The CubeVolEngine class calculates the volume of a cube based on the length of its side.
+ * The CubeVolEngine class calculates the volume of a cube based on the length
+ * of its side.
  * This class implements the Computable interface.
  */
 public class CubeVolEngine implements Computable {
@@ -18,7 +19,9 @@ public class CubeVolEngine implements Computable {
 
     /**
      * Sets the input values required for computing the volume.
-     * @param args An array of String arguments containing the side length of the cube.
+     * 
+     * @param args An array of String arguments containing the side length of the
+     *             cube.
      */
     @Override
     public void setInput(String[] args) {
@@ -26,12 +29,21 @@ public class CubeVolEngine implements Computable {
             if (args.length != 2) {
                 throw new OneInputException(ENGINE_NAME);
             }
+            String value = args[1];
+            for (int i = 0; i < value.length(); i++) {
+                if (Character.isAlphabetic(value.charAt(i))) {
+                    throw new MyNumberFormatException(ENGINE_NAME, value);
+                }
+            }
             sideLength = Double.parseDouble(args[1]);
         } catch (OneInputException e) {
             System.out.println(e.getMessage());
             System.exit(0);
+        } catch (MyNumberFormatException e){
+            System.out.println(e.getMessage());
+            System.exit(0);
         }
-        
+
     }
 
     /**
@@ -48,11 +60,12 @@ public class CubeVolEngine implements Computable {
             System.out.println(e.getMessage());
             System.exit(0);
         }
-        
+
     }
 
     /**
      * Returns the calculated volume of the cube.
+     * 
      * @return The volume of the cube.
      */
     public double getVolume() {
@@ -61,6 +74,7 @@ public class CubeVolEngine implements Computable {
 
     /**
      * Returns the length of the side of the cube.
+     * 
      * @return The length of the side of the cube.
      */
     public double getSideLength() {
@@ -69,6 +83,7 @@ public class CubeVolEngine implements Computable {
 
     /**
      * Returns the result of the computation, which is the volume of the cube.
+     * 
      * @return The volume of the cube.
      */
     @Override

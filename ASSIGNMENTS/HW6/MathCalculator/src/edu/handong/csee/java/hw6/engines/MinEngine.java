@@ -1,6 +1,7 @@
 package edu.handong.csee.java.hw6.engines;
 
 import edu.handong.csee.java.hw6.exceptions.MinimumInputNumberException;
+import edu.handong.csee.java.hw6.exceptions.MyNumberFormatException;
 
 /**
  * The MinEngine class calculates the minimum value among multiple doubles.
@@ -30,13 +31,22 @@ public class MinEngine implements Computable {
             }
             input = new double[args.length - 1];
             for (int i = 1; i < args.length; i++) { // Start from i = 1 since args[0] is the engine name.
+                String value = args[i];
+                for (int j = 0; j < value.length(); j++) {
+                    if (Character.isAlphabetic(value.charAt(j))) {
+                        throw new MyNumberFormatException(ENGINE_NAME, value);
+                    }
+                }
                 input[i - 1] = Double.parseDouble(args[i]); // Store values in the input array.
             }
         } catch (MinimumInputNumberException e) {
             System.out.println(e.getMessage());
             System.exit(0);
+        } catch (MyNumberFormatException e){
+            System.out.println(e.getMessage());
+            System.exit(0);
         }
-        
+
     }
 
     /**

@@ -23,25 +23,34 @@ public class LCMEngine implements Computable {
      */
     @Override
     public void setInput(String[] args) {
-        try{
+        try {
             if (args.length < 3) {
                 throw new MinimumInputNumberException(ENGINE_NAME);
             }
             input = new int[args.length - 1];
             for (int i = 1; i < args.length; i++) {
+                String value = args[i];
+                for (int j = 0; j < value.length(); j++) {
+                    if (Character.isAlphabetic(value.charAt(j))) {
+                        throw new MyNumberFormatException(ENGINE_NAME, value);
+                    }
+                }
                 input[i - 1] = Integer.parseInt(args[i]);
-                if(input[i-1]<0){
+                if (input[i - 1] < 0) {
                     throw new NegativeNumberException(ENGINE_NAME);
                 }
             }
-        } catch(MinimumInputNumberException e){
+        } catch (MinimumInputNumberException e) {
             System.out.println(e.getMessage());
             System.exit(0);
-        } catch(NegativeNumberException e){
+        } catch (NegativeNumberException e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
+        } catch (MyNumberFormatException e){
             System.out.println(e.getMessage());
             System.exit(0);
         }
-        
+
     }
 
     /**
@@ -74,12 +83,12 @@ public class LCMEngine implements Computable {
 
     /**
      * Sets the result of the LCM computation.
+     * 
      * @param result The result of the LCM computation.
      */
     public void setResult(int result) {
         this.result = result;
     }
-
 
     /**
      * Calculates the LCM of two integers.
@@ -108,7 +117,6 @@ public class LCMEngine implements Computable {
         return num1;
     }
 
-
     /**
      * Returns the input array containing the integers.
      * 
@@ -117,8 +125,6 @@ public class LCMEngine implements Computable {
     public int[] getInput() {
         return input;
     }
-
-    
 
     /**
      * Returns the result of the LCM computation.

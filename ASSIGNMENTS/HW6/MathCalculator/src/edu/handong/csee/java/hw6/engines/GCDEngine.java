@@ -30,6 +30,12 @@ public class GCDEngine implements Computable {
             }
             input = new int[args.length - 1];
             for (int i = 1; i < args.length; i++) {
+                String value= args[i];
+                for(int j=0;j<value.length();j++){
+                    if(Character.isAlphabetic(value.charAt(j))){
+                        throw new MyNumberFormatException(ENGINE_NAME,value);
+                    }
+                }
                 input[i - 1] = Integer.parseInt(args[i]);
                 if (input[i - 1] < 0) {
                     throw new NegativeNumberException(ENGINE_NAME);
@@ -39,6 +45,9 @@ public class GCDEngine implements Computable {
             System.out.println(e.getMessage());
             System.exit(0);
         } catch (NegativeNumberException e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
+        } catch (MyNumberFormatException e){
             System.out.println(e.getMessage());
             System.exit(0);
         }
