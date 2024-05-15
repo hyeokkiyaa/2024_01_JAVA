@@ -29,6 +29,7 @@ public class CubeVolEngine implements Computable {
             sideLength = Double.parseDouble(args[1]);
         } catch (OneInputException e) {
             System.out.println(e.getMessage());
+            System.exit(0);
         }
         
     }
@@ -45,6 +46,7 @@ public class CubeVolEngine implements Computable {
             volume = sideLength * sideLength * sideLength;
         } catch (NegativeNumberException e) {
             System.out.println(e.getMessage());
+            System.exit(0);
         }
         
     }

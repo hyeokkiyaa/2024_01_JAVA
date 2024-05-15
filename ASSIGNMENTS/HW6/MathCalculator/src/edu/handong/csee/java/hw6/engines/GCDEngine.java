@@ -37,8 +37,10 @@ public class GCDEngine implements Computable {
             }
         } catch (MinimumInputNumberException e) {
             System.out.println(e.getMessage());
+            System.exit(0);
         } catch (NegativeNumberException e) {
             System.out.println(e.getMessage());
+            System.exit(0);
         }
 
     }

@@ -29,6 +29,7 @@ public class FactorialEngine implements Computable {
             n = Integer.parseInt(args[1]);
         } catch (OneInputException e){
             System.out.println(e.getMessage());
+            System.exit(0);
         }
         
     }
@@ -48,6 +49,7 @@ public class FactorialEngine implements Computable {
             }
         } catch (NegativeNumberException e){
             System.out.println(e.getMessage());
+            System.exit(0);
         }
         
     }

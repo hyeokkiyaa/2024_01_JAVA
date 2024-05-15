@@ -33,8 +33,10 @@ public class SQRTEngine implements Computable {
             }
         } catch (OneInputException e){
             System.out.println(e.getMessage());
+            System.exit(0);
         } catch (NegativeNumberException e) {
             System.out.println(e.getMessage());
+            System.exit(0);
         }
         
     }
