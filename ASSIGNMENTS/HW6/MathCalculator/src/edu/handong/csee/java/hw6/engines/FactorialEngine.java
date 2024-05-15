@@ -1,6 +1,6 @@
 package edu.handong.csee.java.hw6.engines;
 
-import edu.handong.csee.java.hw6.util.InputChecker;
+import edu.handong.csee.java.hw6.exceptions.*;
 
 /**
  * The FactorialEngine class calculates the factorial of a non-negative integer.
@@ -22,10 +22,15 @@ public class FactorialEngine implements Computable {
      */
     @Override
     public void setInput(String[] args) {
-        if (args.length != 2) {
-            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(ENGINE_NAME, 1);
+        try{
+            if (args.length != 2) {
+                throw new OneInputException(ENGINE_NAME);
+            }
+            n = Integer.parseInt(args[1]);
+        } catch (OneInputException e){
+            System.out.println(e.getMessage());
         }
-        n = Integer.parseInt(args[1]);
+        
     }
 
     /**
@@ -33,13 +38,18 @@ public class FactorialEngine implements Computable {
      */
     @Override
     public void compute() {
-        if (n < 0) {
-            InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
+        try{
+            if (n < 0) {
+                throw new NegativeNumberException(ENGINE_NAME);
+            }
+            result = 1; // Initialize result to 1
+            for (int i = 2; i <= n; i++) { // Multiply numbers from 2 to n
+                result *= i;
+            }
+        } catch (NegativeNumberException e){
+            System.out.println(e.getMessage());
         }
-        result = 1; // Initialize result to 1
-        for (int i = 2; i <= n; i++) { // Multiply numbers from 2 to n
-            result *= i;
-        }
+        
     }
 
     /**

@@ -1,6 +1,6 @@
 package edu.handong.csee.java.hw6.engines;
 
-import edu.handong.csee.java.hw6.util.InputChecker;
+import edu.handong.csee.java.hw6.exceptions.MinimumInputNumberException;
 
 /**
  * The MinEngine class calculates the minimum value among multiple doubles.
@@ -24,13 +24,18 @@ public class MinEngine implements Computable {
      */
     @Override
     public void setInput(String[] args) {
-        if (args.length < 3) { // The engine name and at least one number value should be received.
-            InputChecker.printErrorMessageForTheNumberOfMinimumRequiredInputsAndExit(ENGINE_NAME, 2);
+        try {
+            if (args.length < 3) { // The engine name and at least one number value should be received.
+                throw new MinimumInputNumberException(ENGINE_NAME);
+            }
+            input = new double[args.length - 1];
+            for (int i = 1; i < args.length; i++) { // Start from i = 1 since args[0] is the engine name.
+                input[i - 1] = Double.parseDouble(args[i]); // Store values in the input array.
+            }
+        } catch (MinimumInputNumberException e) {
+            System.out.println(e.getMessage());
         }
-        input = new double[args.length - 1];
-        for (int i = 1; i < args.length; i++) {
-            input[i - 1] = Double.parseDouble(args[i]);
-        }
+        
     }
 
     /**

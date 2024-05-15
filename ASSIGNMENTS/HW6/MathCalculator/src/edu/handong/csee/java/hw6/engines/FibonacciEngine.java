@@ -1,6 +1,6 @@
 package edu.handong.csee.java.hw6.engines;
 
-import edu.handong.csee.java.hw6.util.InputChecker;
+import edu.handong.csee.java.hw6.exceptions.*;
 
 /**
  * The FibonacciEngine class calculates the Fibonacci sequence up to a given term.
@@ -22,10 +22,15 @@ public class FibonacciEngine implements Computable {
      */
     @Override
     public void setInput(String[] args) {
-        if (args.length != 2) {
-            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(ENGINE_NAME, 1);
+        try {
+            if (args.length != 2) {
+                throw new OneInputException(ENGINE_NAME);
+            }
+            n = Integer.parseInt(args[1]);
+        } catch (OneInputException e) {
+            System.out.println(e.getMessage());
         }
-        n = Integer.parseInt(args[1]);
+        
     }
 
     /**
@@ -33,10 +38,15 @@ public class FibonacciEngine implements Computable {
      */
     @Override
     public void compute() {
-        if (n < 0) {
-            InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
+        try {
+            if (n < 0) {
+                throw new NegativeNumberException(ENGINE_NAME);
+            }
+            result = fibonacci(n);
+        } catch (NegativeNumberException e) {
+            System.out.println(e.getMessage());
         }
-        result = fibonacci(n);
+        
     }
 
     /**

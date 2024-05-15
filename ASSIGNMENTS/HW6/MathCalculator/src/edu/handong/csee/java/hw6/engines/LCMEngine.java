@@ -1,6 +1,6 @@
 package edu.handong.csee.java.hw6.engines;
 
-import edu.handong.csee.java.hw6.util.InputChecker;
+import edu.handong.csee.java.hw6.exceptions.*;
 
 /**
  * The LCMEngine class calculates the least common multiple (LCM) of multiple
@@ -23,16 +23,23 @@ public class LCMEngine implements Computable {
      */
     @Override
     public void setInput(String[] args) {
-        if (args.length < 3) {
-            InputChecker.printErrorMessageForTheNumberOfMinimumRequiredInputsAndExit(ENGINE_NAME, 2);
-        }
-        input = new int[args.length - 1];
-        for (int i = 1; i < args.length; i++) {
-            input[i - 1] = Integer.parseInt(args[i]);
-            if(input[i-1]<0){
-                InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
+        try{
+            if (args.length < 3) {
+                throw new MinimumInputNumberException(ENGINE_NAME);
             }
+            input = new int[args.length - 1];
+            for (int i = 1; i < args.length; i++) {
+                input[i - 1] = Integer.parseInt(args[i]);
+                if(input[i-1]<0){
+                    throw new NegativeNumberException(ENGINE_NAME);
+                }
+            }
+        } catch(MinimumInputNumberException e){
+            System.out.println(e.getMessage());
+        } catch(NegativeNumberException e){
+            System.out.println(e.getMessage());
         }
+        
     }
 
     /**

@@ -1,6 +1,6 @@
 package edu.handong.csee.java.hw6.engines;
 
-import edu.handong.csee.java.hw6.util.InputChecker;
+import edu.handong.csee.java.hw6.exceptions.*;
 
 /**
  * The SQRTEngine class calculates the square root of a non-negative double.
@@ -23,13 +23,20 @@ public class SQRTEngine implements Computable {
      */
     @Override
     public void setInput(String[] args) {
-        if (args.length != 2) {
-            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(ENGINE_NAME, 1);
+        try{
+            if (args.length != 2) {
+                throw new OneInputException(ENGINE_NAME);
+            }
+            input = Double.parseDouble(args[1]);
+            if (input < 0) {
+                throw new NegativeNumberException(ENGINE_NAME);
+            }
+        } catch (OneInputException e){
+            System.out.println(e.getMessage());
+        } catch (NegativeNumberException e) {
+            System.out.println(e.getMessage());
         }
-        input = Double.parseDouble(args[1]);
-        if (input < 0) {
-            InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
-        }
+        
     }
 
     /**

@@ -22,10 +22,15 @@ public class CubeVolEngine implements Computable {
      */
     @Override
     public void setInput(String[] args) {
-        if (args.length != 2) {
-            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(ENGINE_NAME, 1);
+        try {
+            if (args.length != 2) {
+                throw new OneInputException(ENGINE_NAME);
+            }
+            sideLength = Double.parseDouble(args[1]);
+        } catch (OneInputException e) {
+            System.out.println(e.getMessage());
         }
-        sideLength = Double.parseDouble(args[1]);
+        
     }
 
     /**
@@ -33,10 +38,15 @@ public class CubeVolEngine implements Computable {
      */
     @Override
     public void compute() {
-        if (sideLength < 0) {
-            InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
+        try {
+            if (sideLength < 0) {
+                throw new NegativeNumberException(ENGINE_NAME);
+            }
+            volume = sideLength * sideLength * sideLength;
+        } catch (NegativeNumberException e) {
+            System.out.println(e.getMessage());
         }
-        volume = sideLength * sideLength * sideLength;
+        
     }
 
     /**

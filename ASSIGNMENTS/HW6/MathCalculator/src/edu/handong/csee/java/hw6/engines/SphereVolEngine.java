@@ -1,6 +1,7 @@
 package edu.handong.csee.java.hw6.engines;
 
-import edu.handong.csee.java.hw6.util.InputChecker;
+import edu.handong.csee.java.hw6.exceptions.NegativeNumberException;
+import edu.handong.csee.java.hw6.exceptions.OneInputException;
 
 /**
  * The SphereVolEngine class calculates the volume of a sphere based on its radius.
@@ -23,13 +24,20 @@ public class SphereVolEngine implements Computable {
      */
     @Override
     public void setInput(String[] args) {
-        if (args.length != 2) {
-            InputChecker.printErrorMesssageForTheNumberOfRequiredInputsAndExit(ENGINE_NAME, 1);
+        try{
+            if (args.length != 2) {
+                throw new OneInputException(ENGINE_NAME);
+            }
+            radius = Double.parseDouble(args[1]);
+            if (radius < 0) {
+                throw new NegativeNumberException(ENGINE_NAME);
+            }
+        } catch (OneInputException e) {
+            System.out.println(e.getMessage());
+        } catch (NegativeNumberException e) {
+            System.out.println(e.getMessage());
         }
-        radius = Double.parseDouble(args[1]);
-        if (radius < 0) {
-            InputChecker.printErrorMesssageForNegativeInputsAndExit(ENGINE_NAME);
-        }
+        
     }
 
     /**
