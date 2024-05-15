@@ -1,6 +1,6 @@
 package edu.handong.csee.java.hw6.engines;
 
-import edu.handong.csee.java.hw6.util.InputChecker;
+import edu.handong.csee.java.hw6.exceptions.*;
 
 /**
  * The CubeVolEngine class calculates the volume of a cube based on the length of its side.
