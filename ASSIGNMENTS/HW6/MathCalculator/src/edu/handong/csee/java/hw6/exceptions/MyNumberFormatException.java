@@ -1,6 +1,6 @@
 package edu.handong.csee.java.hw6.exceptions;
 /** This is is a comment for when engine name given is wrong or nothing */
-public class MyNumberFormatException extends Exception{
+public class MyNumberFormatException extends NumberFormatException{
     /**
      * This is Constructor
      */
