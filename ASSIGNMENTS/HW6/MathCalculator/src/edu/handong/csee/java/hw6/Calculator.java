@@ -1,7 +1,7 @@
 package edu.handong.csee.java.hw6;
 
 import edu.handong.csee.java.hw6.engines.*;
-import edu.handong.csee.java.hw6.exceptions.InvalidCommandException;
+import edu.handong.csee.java.hw6.exceptions.*;
 
 /**
  * A class to perform various types of calculations.
